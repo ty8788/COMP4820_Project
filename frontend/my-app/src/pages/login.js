@@ -1,7 +1,8 @@
+import React from 'react'
+import './login.css'
+import {Link} from 'react-router-dom'
 
-import React from "react"
-
-export default function Auth() {
+const login = () => {
   return (
     <div className="Auth-form-container">
       <form className="Auth-form">
@@ -27,12 +28,21 @@ export default function Auth() {
             <button type="submit" className="btn btn-primary">
               Submit
             </button>
+
           </div>
-          <p className="forgot-password text-right mt-2">
+          <div className="d-grid gap-2 mt-3">
+          <Link to="Signup" className="btn btn-primary">Sign iN</Link>
+          </div>
+          <p className="forgot-password text-center mt-2">
             Forgot <a href="#">password?</a>
           </p>
+          
+
         </div>
       </form>
+      
     </div>
   )
 }
+
+export default login
