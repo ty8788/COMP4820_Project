@@ -58,7 +58,7 @@ const login = () => {
       <input type="password" name="password" id="user_password" />
       </div>
       <div className="log_in_button">
-        <button className=' border-0'><Link  to="Signup" className="btn btn-primary">Login</Link></button>
+        <button className=' border-0'><Link  to="Homepage" className="btn btn-primary">Login</Link></button>
       </div>
       <div className="sign_in_button">
         <button className=' border-0'><Link  to="Signup" className="btn btn-primary">Sign In</Link></button>
