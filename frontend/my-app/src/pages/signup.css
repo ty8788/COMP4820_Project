@@ -1,6 +1,6 @@
 .form {
-	text-align: center;
-	background-color: green;
+	
+	
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,17 +8,18 @@
     min-height: 100vh;
 }
 
-.label {
+.label_email, .label_password, .label_name {
 	display: block;
 	font-size: larger;
-	color: white;
+	color: black ;
 	padding: 5px;
 }
 
-.input {
+.input_email, .input_password, .input_name {
 	font-size: larger;
 	padding: 5px;
 	margin: 2px;
+	color: black;
 
 }
 

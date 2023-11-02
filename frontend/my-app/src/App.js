@@ -12,6 +12,7 @@ function App() {
       
         <Route index element={<Login />}/>
         <Route path ="Signup" element = {<Signup/>}></Route>
+        <Route path="login" element={<Login/>} > </Route>
     </Routes>
     </BrowserRouter>
   );
