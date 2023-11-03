@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './signup.css'; 
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
   const [name, setName] = useState('');
@@ -9,7 +9,7 @@ export default function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  
+  const navigate = useNavigate();
   
 
   
@@ -38,8 +38,9 @@ export default function Signup() {
       alert('enter all values')
       setSubmitted(false);
     } else {
+
       setSubmitted(true);
-      
+      navigate('/');
     }
   };
 
