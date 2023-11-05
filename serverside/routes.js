@@ -4,7 +4,7 @@ module.exports = router;
 const Model = require('./datamodel/datamodel');
 
 //Post Method
-router.post('/post', async (req, res) => {
+router.post('/users', async (req, res) => {
     const data = new Model({
         name: req.body.name,
         email: req.body.email,
@@ -15,6 +15,7 @@ router.post('/post', async (req, res) => {
     try {
         const saveData = await data.save();
         res.status(200).json(saveData);
+        console.log("Data Write Successful: ", data )
     }
     catch(error) {
         res.status(400).json({message: error.message});
@@ -33,10 +34,11 @@ router.get('/getAll', async (req, res) => {
 })
 
 //Get by ID Method
-router.get('/getOne/:id', async (req, res) => {
+router.get('/getById/', async (req, res) => {
     try{
-        const data = await Model.findByID(req.params.id);
+        const data = await Model.findByID(req.params.username);
         res.json(data)
+        console.log("Data Pull Successful", res)
     }
     catch(error){
         res.status(500).json({message:error.message});
