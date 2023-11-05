@@ -32,17 +32,30 @@ export default function Signup() {
   };
 
   // Handling the form submission
-  const handleSubmit = (e) => {
+  async function handleSubmit(e){
     e.preventDefault();
-    if (name === '' || email === '' || password === '') {
+    if (name === '' || email === '' || password === ''|| username ==='') {
       alert('enter all values')
       setSubmitted(false);
-    } else {
-
+    } 
+    else {
+      const newUser = {name, email, password, username};
+      await fetch(`http://localhost:8000/Register/`, {
+        method : "POST",
+        headers : {
+          "Content-Type" : "application/json",
+        },
+        body: JSON.stringify(newUser),
+      })
+      .catch(error => {
+        window.alert(error);
+        return
+      });
+      
       setSubmitted(true);
       navigate('/');
     }
-  };
+  }
 
 
   return (
