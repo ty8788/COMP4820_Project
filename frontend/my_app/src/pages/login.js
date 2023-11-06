@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
 import './login.css'
 import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 
 
-let homepage = ""
-
 export default function Login(){
+  const user = "";
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [submitted, setSubmitted] = useState('');
@@ -47,8 +45,11 @@ export default function Login(){
         console.log(json)
         if(json.message == "Success"){
           console.log("Validated")
-          homepage = "Homepage"
-          navigate("/Homepage")
+          alert("You have successfully signed in!")
+          navigate(`/Homepage/` + username)
+        }
+        else{
+          alert("There was an issue with your credentials")
         }
       })
       
@@ -69,7 +70,7 @@ export default function Login(){
       <input type="password" name="password" id="user_password" onChange={handlePassword} />
       </div>
       <div className="log_in_button">
-        <button onClick={login} id = "button" className=' border-0'><Link  to={homepage} className="btn btn-primary">Login</Link></button>
+        <button onClick={login} id = "button" className=' border-0'><Link  to= {`Homepage/${username}`} className="btn btn-primary">Login</Link></button>
       </div>
       <div className="sign_in_button">
         <button className='border-0'><Link  to="Signup" className="btn btn-primary">New User? Sign up!</Link></button>
