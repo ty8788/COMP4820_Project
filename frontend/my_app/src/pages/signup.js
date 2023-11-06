@@ -47,6 +47,17 @@ export default function Signup() {
         },
         body: JSON.stringify(newUser),
       })
+        .then((response) => response.json())
+        .then((json) => {
+          if(json.message == "Success"){
+            console.log("Registered")
+            alert("You have successfully registered!")
+          }
+          else{
+            alert("There was an issue with your credentials")
+          }
+
+        })
       .catch(error => {
         window.alert(error);
         return

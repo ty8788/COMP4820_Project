@@ -13,7 +13,15 @@ const userSchema = new mongoose.Schema({
   password: String,
   email: String
 })
+
+const commentSchema = new mongoose.Schema({
+  name: String,
+  page: String,
+  comment: String
+})
+
 const User = new mongoose.model("User", userSchema)
+const Comments = new mongoose.model("Comments", commentSchema)
 const mongoString = process.env.DATABASE_URL
 const PORT = process.env.PORT || 8000;
 
@@ -36,34 +44,45 @@ app.use(express.json());
 app.use(require('body-parser').json());
 //app.use('/', routes)
 
+//create new user
+app.post("/Register",async (req,res)=>{
+  console.log(req.body) 
+  const {name,username,email,password} = req.body;
+  const user = User.findOne({email:email})    
+  const data = new User({name,username,email,password})
+      try{
+        const saveData = await data.save()
+        res.status(200).json({message : "Success"});
+        console.log("Data Write Successful: ", data )
+      }
+      catch(error){
+        res.status(500).json({message : "Error"})
+      }
+        
+    })
 
+//post comment
+app.post("/getComments", async (req, res) => {
+  const {name, page, comment} = req.body;
+  console.log("Recieved comment post request")
+  const newComment = new Comments({name, page, comment})
+  try{
+    const saveData = await newComment.save()
+    res.status(200).json({message : "Success"});
+    console.log("Data Write Successful: ", saveData )
+  }
+  catch(error){
+    res.status(500).json({message : "Error"})
+  }
+})
 
-
-
-app.get('/getAll', (req, res) => {
-    console.log('Received a GET HTTP method');
-    console.log(req);
-    return res.send(req)
-  });
-
-
-app.get('/Login', (req, res) => {
-  if(valid) return res.send({message:"Success"})
-  else return res.send({message:"Failure"})
-});
-
-async function retrieve(username){
-  const doc = await User.findOne({username : username}).exec()
-  console.log(doc)
-}
 
 // handle a login request
 app.post("/Login",async (req,res) => {
   const username = req.body.username
   const password = req.body.password
   console.log(username)
-  console.log("Recieved Login Request")
-  
+  console.log("Recieved Login Request")  
   try{
     const data = await User.findOne({username:username})
     JSON.stringify(data)
@@ -87,32 +106,29 @@ app.post("/Login",async (req,res) => {
     return
   }  
 })
-  
-app.post("/Register",async (req,res)=>{
-  console.log(req.body) 
-  const {name,username,email,password} = req.body;
-  const user = User.findOne({email:email})    
-  const data = new User({name,username,email,password})
-      try{
-        const saveData = await data.save()
-        res.status(200).json(saveData);
-        console.log("Data Write Successful: ", data )
+
+
+// get all comments from database for a user
+app.get("/getComments/:user", async (req, res) => {
+  console.log("Recieved request to get comments")
+  try{
+    let comments = await Comments.find({page:req.params.user});
+    JSON.stringify(comments)
+    if(comments){
+      console.log("success")
+      let result = []
+      for(let i = 0; i < comments.length; i++){
+        result.push(comments[i].comment)
       }
-      catch(error){
-        res.status(500).json({message : "Error"})
-      }
-        
-    })
-  
-app.put('/users', (req, res) => {
-    console.log('Received a PUT HTTP method');
-    return res.send();
-  });
-  
-app.delete('/users', (req, res) => {
-    console.log('Received a PUT DELETE method');
-    return res.send('Received a DELETE HTTP method');
-  });
+      res.send(result)
+    }
+  }
+  catch(error){
+    console.log(error)
+    return
+  }
+})
+
 
 app.listen(PORT, () => {
     console.log("Server listening on PORT", PORT);
