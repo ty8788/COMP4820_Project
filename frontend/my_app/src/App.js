@@ -5,8 +5,8 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from './pages/login'
 import Signup from './pages/signup';
-import Homepage from './pages/Homepage'
-import Servertest from './servertest'
+import Homepage from './pages/Homepage';
+
 //add <Route index element={<Login />}/> at line 15 to view server test page
 function App() {
   return (

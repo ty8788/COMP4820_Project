@@ -70,7 +70,7 @@ export default function Login(){
       <input type="password" name="password" id="user_password" onChange={handlePassword} />
       </div>
       <div className="log_in_button">
-        <button onClick={login} id = "button" className=' border-0'><Link  to= {`Homepage/${username}`} className="btn btn-primary">Login</Link></button>
+        <button onClick={login} id = "button" className=' border-0'><p className="btn btn-primary">Login</p></button>
       </div>
       <div className="sign_in_button">
         <button className='border-0'><Link  to="Signup" className="btn btn-primary">New User? Sign up!</Link></button>
