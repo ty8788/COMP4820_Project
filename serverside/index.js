@@ -1,10 +1,9 @@
 require('dotenv').config()
 // get dependencies
 const express = require('express');
-const routes = require('./routes');
 const mongoose = require('mongoose');
 const cors = require('cors')
-var valid
+
 
 
 const userSchema = new mongoose.Schema({
