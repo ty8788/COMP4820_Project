@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "login.js" ></script>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div className="main_container">
+        <div onload="test()" className="form_container">
+          <div className="form_container_title">
+            <p className='text_sign_in'>Sign In</p>
+          </div>
+          <div className="input_email">
+            <p className='text_email'>Username</p>
+            <input id="username"/>
+          </div>
+          <div className="input_password">
+          <p className='text_password'>Password</p>
+          <input id="password"/>
+          </div>
+          <div className="log_in_button">
+            <button id = "button" onclick = "checkCredentials()" className=' border-0'><p className="btn btn-primary">Login</p></button>
+          </div>
+          <div className="sign_in_button">
+            <button onclick = "toSignup()" className='border-0'>New User? Sign Up!</button>
+          </div>
+          <div className="forgot_passoword_link">
+            <a>Forgot Password?</a>
+          </div>
+        </div>
+       </div>
+</body>
+</html>

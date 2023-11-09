@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/homepage.css">
+    <script src="homepage.js"></script>
+</head>
+<body>
+
+
+    <nav="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+          <a className="navbar-brand">Lamebook Page</a>
+          <div className="form-inline my-2 my-lg-0">
+            <img src="" className="profile_image" alt="Profile" />
+          </div>
+        </div>
+      </nav>
+      <div className="d-flex justify-content-between m-5">
+        <div className="card" >
+            <img src="..." className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 "card-title">Comment History</h5>
+              <button onclick="getComments()"""> See Comment History</button>
+              <div id="db-cmt" className="card-text"></div>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Comments</h5>
+              <p id = "comments1" className="card-text">
+              </p>
+              <input id="comment"/>
+              <button id = "btn" onclick="postComment()" className="mt-2" >
+                Add Comment
+              </button>
+            </div>
+          </div>
+
+          <div className="card">
+            <img src="..." className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Comments</h5>
+              <p id = "comments2" className="card-text">
+              </p>
+              <input
+                id="cmt2"
+              />
+              <button onclick="postComment()">
+                Add Comment
+              </button>
+            </div>
+          </div>
+
+      </div>
+
+
+
+
+</body>
+</html>
